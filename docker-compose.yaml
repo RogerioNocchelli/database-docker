@@ -1,0 +1,18 @@
+version: '3.5'
+networks:
+  db-local:
+    name: db-local
+services:
+  db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: local_db
+      MYSQL_USER: rogerio
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    networks:
+      - db-local
